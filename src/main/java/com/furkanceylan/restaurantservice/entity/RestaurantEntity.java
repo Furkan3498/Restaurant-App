@@ -20,6 +20,7 @@ public class RestaurantEntity {
     private String address;
     private City city;
     private Boolean isOpen;
+    @Enumerated(EnumType.STRING)
     private CategoryType  category;
 
     @CreationTimestamp
