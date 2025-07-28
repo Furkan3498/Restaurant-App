@@ -92,7 +92,7 @@ public class RestaurantEntity {
         return isOpen;
     }
 
-    public void setOpen(Boolean open) {
+    public void setisOpen(Boolean open) {
         isOpen = open;
     }
 

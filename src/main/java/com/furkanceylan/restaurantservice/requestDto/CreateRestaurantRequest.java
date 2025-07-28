@@ -11,17 +11,17 @@ public class CreateRestaurantRequest {
     private String name;
     private String address;
     private City city;
-    private Boolean isOpen;
+
     private CategoryType category;
 
     public CreateRestaurantRequest() {
     }
 
-    public CreateRestaurantRequest(String name, String address, City city, Boolean isOpen, CategoryType category) {
+    public CreateRestaurantRequest(String name, String address, City city,   CategoryType category) {
         this.name = name;
         this.address = address;
         this.city = city;
-        this.isOpen = isOpen;
+
         this.category = category;
     }
 
@@ -49,13 +49,7 @@ public class CreateRestaurantRequest {
         this.city = city;
     }
 
-    public Boolean getOpen() {
-        return isOpen;
-    }
 
-    public void setOpen(Boolean open) {
-        isOpen = open;
-    }
 
     public CategoryType getCategory() {
         return category;
