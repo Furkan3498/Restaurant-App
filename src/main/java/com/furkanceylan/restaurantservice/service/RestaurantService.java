@@ -42,5 +42,7 @@ public class RestaurantService {
         log.error("ActionLog.getRestaurantById.end - id :{}", restaurantEntity);
 
 
+        return RestaurantMapper.toResponse(restaurantEntity);
+
     }
 }
