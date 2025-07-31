@@ -1,12 +1,16 @@
 package com.furkanceylan.restaurantservice.service;
 
 
+import com.furkanceylan.restaurantservice.Exceptions.NotFoundException;
 import com.furkanceylan.restaurantservice.entity.RestaurantEntity;
 import com.furkanceylan.restaurantservice.mapper.RestaurantMapper;
 import com.furkanceylan.restaurantservice.repository.RestaurantRepository;
 import com.furkanceylan.restaurantservice.requestDto.CreateRestaurantRequest;
+import com.furkanceylan.restaurantservice.responseDto.RestaurantResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -25,6 +29,14 @@ public class RestaurantService {
         restaurantRepository.save(entity);
         log.info("ActionLog.createdRestaurant.end - request :{}", entity.getId());
 
+
+    }
+
+    public RestaurantResponse getRestaurantById(String id){
+        log.info("ActionLog.getRestaurantById.start - request :{}", id);
+        RestaurantEntity restaurantEntity = restaurantRepository.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundException("Restaurant not found with id : " + id));
+
+        restaurantRepository.
 
     }
 }
