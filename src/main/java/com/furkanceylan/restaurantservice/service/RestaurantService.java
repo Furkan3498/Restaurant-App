@@ -33,10 +33,14 @@ public class RestaurantService {
     }
 
     public RestaurantResponse getRestaurantById(String id){
-        log.info("ActionLog.getRestaurantById.start - request :{}", id);
-        RestaurantEntity restaurantEntity = restaurantRepository.findById(UUID.fromString(id)).orElseThrow(() -> new NotFoundException("Restaurant not found with id : " + id));
+        log.info("ActionLog.getRestaurantById.start - id :{}", id);
+        RestaurantEntity restaurantEntity = restaurantRepository.findById(UUID.fromString(id)).orElseThrow(
+                () ->
+                {       log.error("ActionLog.getRestaurantById.error - id :{}", id);
+                      return   new NotFoundException("Restaurant not found with id : " + id);
+                });
+        log.error("ActionLog.getRestaurantById.end - id :{}", restaurantEntity);
 
-        restaurantRepository.
 
     }
 }
