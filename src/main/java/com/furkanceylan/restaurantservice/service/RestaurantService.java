@@ -8,6 +8,8 @@ import com.furkanceylan.restaurantservice.repository.RestaurantRepository;
 import com.furkanceylan.restaurantservice.requestDto.CreateRestaurantRequest;
 import com.furkanceylan.restaurantservice.responseDto.RestaurantResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -30,6 +32,13 @@ public class RestaurantService {
         log.info("ActionLog.createdRestaurant.end - request :{}", entity.getId());
 
 
+    }
+
+    public Page<RestaurantResponse> getAllRestaurant(Pageable pageable){
+        log.info("ActionLog.getAllRestaurant.start ");
+        Page<RestaurantEntity> restaurantEntities = restaurantRepository.findAll(pageable);
+        log.info("ActionLog.getAllRestaurant.ended - totalrestaurant :{}",restaurantEntities.getTotalElements());
+        return restaurantEntities.map(RestaurantMapper::toResponse);
     }
 
     public RestaurantResponse getRestaurantById(String id){
