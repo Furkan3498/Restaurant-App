@@ -32,6 +32,7 @@ public class RestaurantService {
         log.info("ActionLog.createdRestaurant.end - request :{}", entity.getId());
 
 
+       // return null;
     }
 
     public Page<RestaurantResponse> getAllRestaurant(Pageable pageable){
