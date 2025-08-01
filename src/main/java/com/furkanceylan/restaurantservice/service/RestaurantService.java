@@ -45,4 +45,17 @@ public class RestaurantService {
         return RestaurantMapper.toResponse(restaurantEntity);
 
     }
+
+    public void deleteRestaurant(String id){
+    log.info("ActionLog.deleteRestaurant.start - id :{}", id);
+    RestaurantEntity entity = restaurantRepository.findById(UUID.fromString(id)).orElseThrow(()
+    -> {
+        log.info("ActionLog.deleteRestaurant.error - id :{}", id);
+        return  new NotFoundException("Restaurant not found with id : " + id);
+
+    });
+        restaurantRepository.delete(entity);
+        log.info("ActionLog.deleteRestaurant.end - id :{}", id);
+
+    }
 }
