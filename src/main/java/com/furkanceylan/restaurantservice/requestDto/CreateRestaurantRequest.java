@@ -2,15 +2,21 @@ package com.furkanceylan.restaurantservice.requestDto;
 
 import com.furkanceylan.restaurantservice.entity.CategoryType;
 import com.furkanceylan.restaurantservice.entity.City;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
 public class CreateRestaurantRequest {
 
 
+
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+    @NotBlank(message = "Address cannot be blank")
     private String address;
+    @NotBlank(message = "City cannot be blank")
     private City city;
+    @NotBlank(message = "Category cannot be blank")
 
     private CategoryType category;
 
