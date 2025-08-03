@@ -3,6 +3,7 @@ package com.furkanceylan.restaurantservice.Exceptions;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -33,6 +34,14 @@ public class ErrorHandler {
               response.setCode("METHOD_NOT_ALLOWED");
               return ResponseEntity.status(405).body(response);
         }
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ErrorResponse> handler(HttpMediaTypeNotSupportedException exception){
+        ErrorResponse response = new ErrorResponse();
+        response.setMessage("Unsupported media type : " +exception.getContentType());
+        response.setCode("UNSUPPORTED_MEDİA_TYPE");
+        return ResponseEntity.badRequest().body(response);
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponse> handler(HttpMessageNotReadableException exception){
         ErrorResponse response = new ErrorResponse();
