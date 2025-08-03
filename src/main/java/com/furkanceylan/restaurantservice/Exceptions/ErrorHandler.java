@@ -2,6 +2,8 @@ package com.furkanceylan.restaurantservice.Exceptions;
 
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -24,6 +26,20 @@ public class ErrorHandler {
               response.setCode("INTERNAL_SERVER_ERROR");
               return ResponseEntity.status(500).body(response);
         }
+        @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+        public ResponseEntity<ErrorResponse> handler(HttpRequestMethodNotSupportedException exception){
+              ErrorResponse response = new ErrorResponse();
+              response.setMessage("Method not allowed : " +exception.getMethod());
+              response.setCode("METHOD_NOT_ALLOWED");
+              return ResponseEntity.status(405).body(response);
+        }
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handler(HttpMessageNotReadableException exception){
+        ErrorResponse response = new ErrorResponse();
+        response.setMessage("Malformed JSON request "  );
+        response.setCode("MALFORMED_JSON");
+        return ResponseEntity.status(405).body(response);
+    }
 
         @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handler(MethodArgumentNotValidException ex){
