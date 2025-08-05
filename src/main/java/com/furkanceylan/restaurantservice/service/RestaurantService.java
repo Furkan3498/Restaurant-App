@@ -8,6 +8,8 @@ import com.furkanceylan.restaurantservice.repository.RestaurantRepository;
 import com.furkanceylan.restaurantservice.requestDto.CreateRestaurantRequest;
 import com.furkanceylan.restaurantservice.responseDto.RestaurantResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,11 +17,11 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-@Slf4j
 
 public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
+    private static final Logger log = LoggerFactory.getLogger(RestaurantService.class);
 
     public RestaurantService(RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
