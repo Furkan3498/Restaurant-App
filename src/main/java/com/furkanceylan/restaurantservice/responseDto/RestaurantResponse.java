@@ -8,7 +8,7 @@ import jakarta.persistence.Enumerated;
 import java.util.UUID;
 
 public class RestaurantResponse {
-    private UUID id;
+    private Long id;
     private String name;
     private String address;
     private City city;
@@ -18,7 +18,7 @@ public class RestaurantResponse {
     public RestaurantResponse() {
     }
 
-    public RestaurantResponse(UUID id, String name, String address, City city, CategoryType categoryType, Boolean isOpen) {
+    public RestaurantResponse(Long id, String name, String address, City city, CategoryType categoryType, Boolean isOpen) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -27,11 +27,11 @@ public class RestaurantResponse {
         this.isOpen = isOpen;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

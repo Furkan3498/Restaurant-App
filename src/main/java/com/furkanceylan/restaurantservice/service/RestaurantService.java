@@ -44,9 +44,9 @@ public class RestaurantService {
         return restaurantEntities.map(RestaurantMapper::toResponse);
     }
 
-    public RestaurantResponse getRestaurantById(String id){
+    public RestaurantResponse getRestaurantById(Long id){
         log.info("ActionLog.getRestaurantById.start - id :{}", id);
-        RestaurantEntity restaurantEntity = restaurantRepository.findById(UUID.fromString(id)).orElseThrow(
+        RestaurantEntity restaurantEntity = restaurantRepository.findById(id).orElseThrow(
                 () ->
                 {       log.error("ActionLog.getRestaurantById.error - id :{}", id);
                       return   new NotFoundException("Restaurant not found with id : " + id);
@@ -58,9 +58,9 @@ public class RestaurantService {
 
     }
 
-    public void deleteRestaurant(String id){
+    public void deleteRestaurant(Long id){
     log.info("ActionLog.deleteRestaurant.start - id :{}", id);
-    RestaurantEntity entity = restaurantRepository.findById(UUID.fromString(id)).orElseThrow(()
+    RestaurantEntity entity = restaurantRepository.findById(id).orElseThrow(()
     -> {
         log.info("ActionLog.deleteRestaurant.error - id :{}", id);
         return  new NotFoundException("Restaurant not found with id : " + id);

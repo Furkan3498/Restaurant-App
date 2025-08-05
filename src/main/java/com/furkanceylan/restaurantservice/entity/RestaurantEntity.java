@@ -14,8 +14,8 @@ import java.util.UUID;
 public class RestaurantEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String address;
     private City city;
@@ -32,7 +32,7 @@ public class RestaurantEntity {
     public RestaurantEntity() {
     }
 
-    public RestaurantEntity(UUID id, String name, String address, City city, Boolean isOpen, CategoryType category, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public RestaurantEntity(Long id, String name, String address, City city, Boolean isOpen, CategoryType category, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -48,19 +48,19 @@ public class RestaurantEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RestaurantEntity that = (RestaurantEntity) o;
-        return Objects.equals(id, that.id);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(address, that.address) && city == that.city && Objects.equals(isOpen, that.isOpen) && category == that.category && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, name, address, city, isOpen, category, createdAt, updatedAt);
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -92,7 +92,7 @@ public class RestaurantEntity {
         return isOpen;
     }
 
-    public void setisOpen(Boolean open) {
+    public void setIsOpen(Boolean open) {
         isOpen = open;
     }
 
@@ -120,3 +120,7 @@ public class RestaurantEntity {
         this.updatedAt = updatedAt;
     }
 }
+
+
+
+

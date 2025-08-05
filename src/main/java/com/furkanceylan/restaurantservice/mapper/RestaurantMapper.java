@@ -15,7 +15,7 @@ public class RestaurantMapper {
         restaurantEntity.setCity(request.getCity());
         restaurantEntity.setCategory(request.getCategory());
         restaurantEntity.setName(request.getName());
-        restaurantEntity.setisOpen(Boolean.TRUE);
+        restaurantEntity.setIsOpen(Boolean.TRUE);
 
         return restaurantEntity;
     }

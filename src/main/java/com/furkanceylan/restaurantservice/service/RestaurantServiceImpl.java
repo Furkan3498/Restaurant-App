@@ -14,8 +14,8 @@ public interface RestaurantServiceImpl {
 
     Page<RestaurantResponse> getAllRestaurants(Pageable pageable);
 
-    RestaurantResponse getRestaurantById(String id);
+    RestaurantResponse getRestaurantById(Long id);
     RestaurantEntity  updateRestaurant(String id,CreateRestaurantRequest request);
 
-    void deletedRestaurant(String id);
+    void deletedRestaurant(Long id);
 }

@@ -34,12 +34,12 @@ public class RestaurantController {
         return  ResponseEntity.ok(restaurantService.getAllRestaurant(pageable));
     }
     @GetMapping("/{id}")
-    public ResponseEntity<RestaurantResponse> getRestaurantById(@PathVariable String id){
+    public ResponseEntity<RestaurantResponse> getRestaurantById(@PathVariable Long id){
         return  ResponseEntity.ok( restaurantService.getRestaurantById(id));
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRestaurant(@PathVariable String id){
+    public void deleteRestaurant(@PathVariable Long id){
         restaurantService.deleteRestaurant(id);
     }
 }
