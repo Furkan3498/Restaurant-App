@@ -14,9 +14,9 @@ public class CreateRestaurantRequest {
     private String name;
     @NotBlank(message = "Address cannot be blank")
     private String address;
-    @NotBlank(message = "City cannot be blank")
+
     private City city;
-    @NotBlank(message = "Category cannot be blank")
+
 
     private CategoryType category;
 
