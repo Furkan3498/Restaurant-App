@@ -16,7 +16,7 @@ public class MenuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long restauranId;
+    private Long restaurantId;
     private String name;
     private String description;
     private BigDecimal price;
@@ -33,9 +33,9 @@ public class MenuEntity {
     public MenuEntity() {
     }
 
-    public MenuEntity(Long id, Long restauranId, String name, String description, BigDecimal price, Boolean isAvailable, MenuCategory menuCategory, LocalDateTime createdTime, LocalDateTime updatedTime) {
+    public MenuEntity(Long id, Long restaurantId, String name, String description, BigDecimal price, Boolean isAvailable, MenuCategory menuCategory, LocalDateTime createdTime, LocalDateTime updatedTime) {
         this.id = id;
-        this.restauranId = restauranId;
+        this.restaurantId = restaurantId;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -66,12 +66,12 @@ public class MenuEntity {
         this.id = id;
     }
 
-    public Long getRestauranId() {
-        return restauranId;
+    public Long getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestauranId(Long restauranId) {
-        this.restauranId = restauranId;
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getName() {
